@@ -10,4 +10,5 @@ class Secret{
 		this.Secret = aes.encrypt(random.randomUint8Array(128) , pass);
 	}
 
+
 }

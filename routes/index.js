@@ -10,7 +10,7 @@ var secretService = require("./../services/secretService.js"),
 
 
 //Export a single function responsible for routing
-exports.route = function(server){
+module.exports.route = function(server){
 
 
 
@@ -18,7 +18,7 @@ exports.route = function(server){
 
 
 
-
+//TBI
 
 
 
@@ -31,8 +31,9 @@ exports.route = function(server){
 
 	server.route({
 		method:'POST',
-		route: '/signup' ,
+		path: '/signup' ,
 		handler:function(request, reply){
+			console.log("signing up user: " + request.username);
 			let user = new User(request.username, request.password);
 
 		}
@@ -41,9 +42,10 @@ exports.route = function(server){
 	//return true if credentials match up to verify user has correct password.credentials will be passed with each request.
 	server.route({
 		method :'POST',
-		route:'/login',
+		path:'/login',
 		handler: function (request, reply){
-			if(UserService.auth(request.username, request.password)){
+			console.log("logging in user: " + request.username);
+			if(UserService.Authenticate(request.username, request.password)){
 				reply(200, 'OK');
 			}else{
 				reply(403, 'forbidden');
@@ -58,13 +60,13 @@ exports.route = function(server){
 
 
 
-/************************SALT API************************************/
+/************************SECRETS API************************************/
 
 
 
 	server.route({
 		method:'POST',
-		route: '/Secret' ,
+		path: '/Secret' ,
 		handler:function(request, reply){
 			//remember to check credentials!
 			let user = UserService.getUser(request.username, request,password);

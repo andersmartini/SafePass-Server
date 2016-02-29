@@ -22,9 +22,6 @@ function getSecret(user, domain){
 
 function addSecret(user, domain){
 	return new Promise(function(res, rej){	
-	const secret  = new Secret(domain, user.pass);
-	let usr = Object.assign(user);
-	usr.Secrets.push(secret)
-	return res(usr);
+
 	})
 }
