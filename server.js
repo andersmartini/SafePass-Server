@@ -7,8 +7,8 @@ const Router = require("./routes/index.js");
 const server = new Hapi.Server();
 
 server.connection({
-	host:'localhost',
-	port:$PORT
+	host:process.env.HOST || 'localhost',
+	port:process.env.PORT || 3000
 })
 
 Router.route(server);
