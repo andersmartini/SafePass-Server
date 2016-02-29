@@ -30,10 +30,10 @@ module.exports.route = function(server){
 	//Register new Users!	
 
 	server.route({
-		method:'POST',
+		method:'GET',
 		path: '/signup' ,
 		handler:function(request, reply){
-			console.log("signing up user: " + request.username);
+			console.log( `signing up user: ${request.username}` );
 			let user = new User(request.username, request.password);
 
 		}
@@ -44,7 +44,7 @@ module.exports.route = function(server){
 		method :'POST',
 		path:'/login',
 		handler: function (request, reply){
-			console.log("logging in user: " + request.username);
+			console.log(`Logging in user: ${request.username}! ` );
 			if(UserService.Authenticate(request.username, request.password)){
 				reply(200, 'OK');
 			}else{
