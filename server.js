@@ -8,7 +8,7 @@ const server = new Hapi.Server();
 
 server.connection({
 	host:'localhost',
-	port:3000
+	port:$PORT
 })
 
 Router.route(server);
