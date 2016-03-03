@@ -10,6 +10,23 @@ server.connection({
 	port:process.env.PORT || 3000
 })
 
+var plugins = [
+	{
+		register: require('hapi-auth-basic')
+	},
+	{
+		register: require('hapi-authorization')
+		options: {
+		  roles: false	// no heirarky, you can only acces your own passwords  
+		}
+	}
+];
+ 
+server.register(plugins, function(err) 
+
+
+
+
 Router.route(server);
 
 server.start((err) => {

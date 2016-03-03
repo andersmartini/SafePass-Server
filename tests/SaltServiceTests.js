@@ -1,33 +1,33 @@
 var assert = require("assert");
-var SaltService = require("~/services/SaltService.js");
+var secretService = require("~/services/secretService.js");
 
 // Tests that getSalt returns unique salts for unique user/domain pairs
-function TestUniqueSalts(){
+function TestUniqueSecrets(){
 
-	var salt;
-	SaltService.getSalt("name","pass", "facebook", function(err, salt){
-		salt = salt;
+	var Secret;
+	secretService.getSecret("name","pass", "facebook", function(err, Secret){
+		Secret = Secret;
 	});
-	SaltService.getSalt("name","pass", "google", function(err, pepper){
-		assert(salt != null && pepper!= null);
-		assert(salt != pepper);
+	secretService.getSecret("name","pass", "google", function(err, classified){
+		assert(Secret != null && classified!= null);
+		assert(Secret != classified);
 	});
 
 
 }
 
 
-//test that the same salt is returned for the same user/domain pair each time it is invoked
-function TestConsistentSalts(){
-	var salt;
-	//Store initial salt in salt
-	SaltService.getSalt("name","google", function(err, salt){
-		salt=salt;
+//test that the same Secret is returned for the same user/domain pair each time it is invoked
+function TestConsistentSecrets(){
+	var Secret;
+	//Store initial Secret in Secret
+	secretService.getSecret("name","google", function(err, Secret){
+		Secret=Secret;
 	})
-	//get salt for same domain 10 times, and assert they are always equal
+	//get Secret for same domain 10 times, and assert they are always equal
 	for (var i = 10; i >= 0; i--) {			
-	SaltService.getSalt("name","google", function(err, pepper){
-		assert(pepper==salt);
+	secretService.getSecret("name","google", function(err, classified){
+		assert(classified==Secret);
 	})
 
 	}
