@@ -50,13 +50,13 @@ internals.getSecret = function(request, reply){
 
 	{
 		method :'POST',
-		path:'/login/${username}/${password} ',
+		path:'/login/*',
 		handler:internals.login
 
 	},
 
 	{
 		method:'POST',
-		path: '/Secret/${Domain}'  ,
+		path: '/Secret/*',
 		handler:internals.getSecret
 	}];

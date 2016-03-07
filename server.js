@@ -1,6 +1,6 @@
 var Hapi = require("hapi");
 var routes = require("./routes/index.js");
-
+var mongoose = require("mongoose");
 
 
 
@@ -15,11 +15,7 @@ server.connection({
 
 var mongoUri = process.env.MONGULAB_URI;
 var options = {
-  'db': { 'native_parser': true },
-  'server': { 'poolSize': 5 },
-  'replset': { 'rs_name': 'myReplicaSetName' },
-  'user': 'myUserName',
-  'pass': 'myPassword'
+  'db': { 'native_parser': true }
 }
 
 mongoose.connect(mongoUri, options);
@@ -40,12 +36,10 @@ var plugins = [
 ];
  
 server.register(plugins, function(err){
-
-
-server.route(routes);
 	
 }) 
 
+server.route(routes);
 
 
 
@@ -56,3 +50,5 @@ server.start(function(err){
 	}
 	console.log("server running at " + server.info.uri);
 })
+
+module.exports = server;
