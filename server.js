@@ -13,7 +13,7 @@ server.connection({
 
 /****************** Database Setup **************/
 
-var mongoUri = prcoess.env.MONGULAB_URI;
+var mongoUri = process.env.MONGULAB_URI;
 var options = {
   'db': { 'native_parser': true },
   'server': { 'poolSize': 5 },
