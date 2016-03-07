@@ -13,7 +13,7 @@ const internals = {};
 
 
 internals.signup = function(request, reply){
-			console.log( `signing up user: ${request.username}` );
+			console.log( `signing up user: ${request.params.username}` );
 			let user = new User(request.params.username, request.params.password);
 		}
 
