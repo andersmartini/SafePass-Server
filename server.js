@@ -13,12 +13,17 @@ server.connection({
 
 /****************** Database Setup **************/
 
-var mongoUri = process.env.MONGULAB_URI;
+var mongoUri = process.env.MONGOLAB_URI || 'localhost/27017'
 var options = {
   'db': { 'native_parser': true }
 }
 
-mongoose.connect(mongoUri, options);
+mongoose.connect(mongoUri, options, function(err){
+	if(err){
+		console.log(err);
+		process.exit(1);
+	}
+});
 
 
 
