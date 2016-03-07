@@ -46,14 +46,14 @@ internals.getSecret = function(request, reply){
 		method:'POST',
 		path: '/signup' ,
 		handler:internals.signup
-	}
+	},
 
 	{
 		method :'POST',
 		path:'/login/${username}/${password} ',
 		handler:internals.login
 
-	}
+	},
 
 	{
 		method:'POST',
