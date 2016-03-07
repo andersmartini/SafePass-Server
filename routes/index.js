@@ -32,7 +32,7 @@ internals.getSecret = function(request, reply){
 			//remember to check credentials!
 			let user = UserService.getUser(request.username, request,password);
 
-			const Secret = secretService.getSecret(user, request.Domain).catch(secretService.addSecret)
+			const Secret = secretService.getSecret(user, request.Domain).catch(secretService.addSecret);
 
 			reply({secret:Secret.secret});
 		}

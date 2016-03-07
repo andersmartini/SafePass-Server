@@ -7,7 +7,7 @@ const random = require("secure-random");
 
 
 
-//returns Promise that either resolves with a Secret, or Rejects with the user and domain put into it
+//returns Promise that either resolves with a Secret, or Rejects with the user and domain
 function getSecret(user, domain){
 	return new Promise(function(resolve , reject){
 		for (let i = user.Secrets.length - 1; i >= 0; i--) {

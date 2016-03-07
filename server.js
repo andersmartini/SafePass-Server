@@ -10,6 +10,23 @@ server.connection({
 	port:process.env.PORT || 3000
 })
 
+
+/****************** Database Setup **************/
+
+const mongoUri = prcoess.env.MONGULAB_URI;
+const options = {
+  db: { native_parser: true },
+  server: { poolSize: 5 },
+  replset: { rs_name: 'myReplicaSetName' },
+  user: 'myUserName',
+  pass: 'myPassword'
+}
+
+mongoose.connect(mongoUri, options);
+
+
+
+
 var plugins = [
 	{
 		register: require('hapi-auth-basic')
