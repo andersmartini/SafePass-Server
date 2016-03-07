@@ -32,7 +32,7 @@ var plugins = [
 		register: require('hapi-auth-basic')
 	},
 	{
-		register: require('hapi-authorization')
+		register: require('hapi-authorization'),
 		options: {
 		  roles: false	// no heirarky, you can only acces your own passwords  
 		}
