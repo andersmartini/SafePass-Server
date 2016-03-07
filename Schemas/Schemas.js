@@ -31,3 +31,6 @@ UserSchema.methods.getSecret = function(domain){
 SecretSchema.methods.decrypt = function(pass){
 	aes.decrypt(this.Secret, pass)
 }
+
+module.exports.UserModel = mongoose.model('User', UserSchema);
+module.exports.SecretModel = mongoose.model('Secret', SecretSchema);

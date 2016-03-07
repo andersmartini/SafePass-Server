@@ -5,6 +5,7 @@
 const secretService = require("./../services/secretService.js"),
 		UserService = require("./../services/UserService.js"),
 		hapi = require("hapi"),
+		User = require("../Schemas/Schemas.js").UserModel,
 		basic = require("hapi-auth-basic");
 
 const internals = {};
@@ -14,8 +15,6 @@ const internals = {};
 internals.signup = function(request, reply){
 			console.log( `signing up user: ${request.username}` );
 			let user = new User(request.params.username, request.params.password);
-
-			
 		}
 
 
@@ -36,8 +35,6 @@ internals.getSecret = function(request, reply){
 
 			reply({secret:Secret.secret});
 		}
-
-
 
 
 
