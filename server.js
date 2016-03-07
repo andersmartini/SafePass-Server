@@ -15,11 +15,11 @@ server.connection({
 
 const mongoUri = prcoess.env.MONGULAB_URI;
 const options = {
-  db: { native_parser: true },
-  server: { poolSize: 5 },
-  replset: { rs_name: 'myReplicaSetName' },
-  user: 'myUserName',
-  pass: 'myPassword'
+  'db': { 'native_parser': true },
+  'server': { 'poolSize': 5 },
+  'replset': { 'rs_name': 'myReplicaSetName' },
+  'user': 'myUserName',
+  'pass': 'myPassword'
 }
 
 mongoose.connect(mongoUri, options);
