@@ -1,10 +1,10 @@
-const Hapi = require("hapi");
-const routes = require("./routes/index.js");
+var Hapi = require("hapi");
+var routes = require("./routes/index.js");
 
 
 
 
-const server = new Hapi.Server();
+var server = new Hapi.Server();
 
 server.connection({
 	port:process.env.PORT || 3000
@@ -13,8 +13,8 @@ server.connection({
 
 /****************** Database Setup **************/
 
-const mongoUri = prcoess.env.MONGULAB_URI;
-const options = {
+var mongoUri = prcoess.env.MONGULAB_URI;
+var options = {
   'db': { 'native_parser': true },
   'server': { 'poolSize': 5 },
   'replset': { 'rs_name': 'myReplicaSetName' },
@@ -39,14 +39,18 @@ var plugins = [
 	}
 ];
  
-server.register(plugins, function(err) 
-
-
+server.register(plugins, function(err){
 
 
 server.route(routes);
+	
+}) 
 
-server.start((err) => {
+
+
+
+
+server.start(function(err){
 	if(err){
 		throw err
 	}
