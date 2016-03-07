@@ -1,5 +1,5 @@
 const Hapi = require("hapi");
-const Router = require("./routes/index.js");
+const routes = require("./routes/index.js");
 
 
 
@@ -44,7 +44,7 @@ server.register(plugins, function(err)
 
 
 
-Router.route(server);
+server.route(routes);
 
 server.start((err) => {
 	if(err){
