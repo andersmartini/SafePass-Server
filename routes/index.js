@@ -13,7 +13,7 @@ const internals = {};
 
 internals.signup = function(request, reply){
 			console.log( `signing up user: ${request.username}` );
-			let user = new User(request.body.username, request.password);
+			let user = new User(request.params.username, request.params.password);
 
 			
 		}
@@ -21,7 +21,7 @@ internals.signup = function(request, reply){
 
  internals.login = function(request, reply){
 			console.log(`Logging in user: ${request.username}! ` );
-			if(UserService.Authenticate(request.username, request.password)){
+			if(UserService.Authenticate(request.params.username, request.params.password)){
 				reply(200, 'OK');
 			}else{
 				reply(403, 'forbidden');
@@ -30,9 +30,9 @@ internals.signup = function(request, reply){
 
 internals.getSecret = function(request, reply){
 			//remember to check credentials!
-			let user = UserService.getUser(request.username, request,password);
+			let user = UserService.getUser(request.params.username, request.params.password);
 
-			const Secret = secretService.getSecret(user, request.Domain).catch(secretService.addSecret);
+			const Secret = secretService.getSecret(user, request.params.Domain).catch(secretService.addSecret);
 
 			reply({secret:Secret.secret});
 		}
